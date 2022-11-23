@@ -28,7 +28,7 @@ export default function Home({ properties }) {
     e.target.childNodes[3].childNodes[1].childNodes[0].value = "";
 
     const data = await fetch(
-      `http://localhost:3000/api/addSighting?location=${location}&Date=${date}&Time=${time}&OnGround=${onGround}`
+      `/api/addSighting?location=${location}&Date=${date}&Time=${time}&OnGround=${onGround}`
     );
 
     console.log(await data.json());
@@ -37,7 +37,7 @@ export default function Home({ properties }) {
 
   async function handleDelete(id) {
     console.log(id);
-    const data = await fetch(`http://localhost:3000/api/deleteSighting?_id=${id}`);
+    const data = await fetch(`/api/deleteSighting?_id=${id}`);
     console.log(await data.json());
     refreshData();
   }
@@ -49,9 +49,7 @@ export default function Home({ properties }) {
     e.target.childNodes[1].childNodes[0].childNodes[3].value = "";
     e.preventDefault();
 
-    const data = await fetch(
-      `http://localhost:3000/api/updateSighting?radio=${radio}&what=${what}&to=${to}`
-    );
+    const data = await fetch(`/api/updateSighting?radio=${radio}&what=${what}&to=${to}`);
     console.log(await data.json());
     refreshData();
   }
